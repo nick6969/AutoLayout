@@ -36,5 +36,13 @@ extension UIView{
         return mLay(attribute, relatedBy , toItem, attribute1, multiplier:1, constant:constant)
     }
     
+    func mLay(pin:UIEdgeInsets,to view:UIView)->[NSLayoutConstraint]{
+        return [
+            self.mLay(.top    , .equal , view , constant:  pin.top    ),
+            self.mLay(.left   , .equal , view , constant:  pin.left   ),
+            self.mLay(.bottom , .equal , view , constant: -pin.bottom ),
+            self.mLay(.right  , .equal , view , constant: -pin.top    ),
+        ]
+    }
 }
 
