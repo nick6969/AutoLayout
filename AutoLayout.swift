@@ -41,7 +41,7 @@ extension UIView{
             self.mLay(.top    , .equal , view , constant:  pin.top    ),
             self.mLay(.left   , .equal , view , constant:  pin.left   ),
             self.mLay(.bottom , .equal , view , constant: -pin.bottom ),
-            self.mLay(.right  , .equal , view , constant: -pin.top    ),
+            self.mLay(.right  , .equal , view , constant: -pin.right  ),
         ]
     }
 }
