@@ -29,7 +29,7 @@
     預設 isActive = true ， 不用再手工 addConstraint
     
     以前為這樣寫
-        view.addSubview(button)
+    
         view.addConstraints([
             button.mLay(.height, 50)
         ])
