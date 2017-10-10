@@ -99,3 +99,9 @@
 
     現在可以這樣寫
     button.mLay(.height, 150).priority(999)
+    
+    // 2017-10-10
+    添加 active 參數 預設是 true
+    所以舊有的不用更改
+    若是只是要製作一個 NSLayoutConstraint 沒有要及時直接使用的話
+    可以加上參數 active = false 就可以
