@@ -92,3 +92,46 @@ extension NSLayoutConstraint {
     }
     
 }
+
+extension UIView {
+    enum mLayDirection {
+        case top
+        case left
+        case bottom
+        case right
+        
+        func getLayoutAttribute() -> NSLayoutAttribute {
+            switch self {
+            case .top: return .top
+            case .left: return .left
+            case .bottom: return .bottom
+            case .right: return .right
+            }
+        }
+    }
+    
+    // Auto Active
+    @discardableResult func mLayEqualSafeArea(with item: UIView, direction: mLayDirection, constant: CGFloat = 0, active: Bool = true) -> NSLayoutConstraint {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 11.0, *) {
+            switch direction {
+            case .top:  return self.topAnchor.constraint(equalTo: item.safeAreaLayoutGuide.topAnchor, constant: constant).active(bool: active)
+            case .left: return self.leftAnchor.constraint(equalTo: item.safeAreaLayoutGuide.leftAnchor, constant: constant).active(bool: active)
+            case .bottom: return self.bottomAnchor.constraint(equalTo: item.safeAreaLayoutGuide.bottomAnchor, constant: constant).active(bool: active)
+            case .right: return self.rightAnchor.constraint(equalTo: item.safeAreaLayoutGuide.rightAnchor, constant: constant).active(bool: active)
+            }
+        } else {
+            let attrib = direction.getLayoutAttribute()
+            return NSLayoutConstraint(item: self, attribute: attrib, relatedBy: .equal, toItem: item, attribute: attrib, multiplier: 1, constant: constant).active(bool: active)
+        }
+    }
+    
+}
+
+extension NSLayoutConstraint {
+    func active(bool: Bool) -> NSLayoutConstraint {
+        self.isActive = bool
+        return self
+    }
+}
+
