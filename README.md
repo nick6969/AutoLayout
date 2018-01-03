@@ -1,5 +1,10 @@
 # AutoLayout
 
+// 2018-01-03
+修正邏輯錯誤
+isActive = true 之後的 NSLayoutConstraint 只能更改 constant
+添加 assert 保護，讓開發者可以理解發生的問題，進而修正 
+
 // 2017-10-13
     支援 SafeArea
 
