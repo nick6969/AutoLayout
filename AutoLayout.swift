@@ -87,6 +87,7 @@ extension UIView {
 extension NSLayoutConstraint {
     
     @discardableResult func priority(_ pri: UILayoutPriority) -> NSLayoutConstraint {
+        assert(!isActive, "isActive = true 之後的 NSLayoutConstraint 只能更改 constant, 請重新修改寫法")
         self.priority = pri
         return self
     }
@@ -129,9 +130,10 @@ extension UIView {
 }
 
 extension NSLayoutConstraint {
-    func active(bool: Bool) -> NSLayoutConstraint {
+    @discardableResult func active(bool: Bool) -> NSLayoutConstraint {
         self.isActive = bool
         return self
     }
 }
+
 
