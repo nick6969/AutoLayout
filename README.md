@@ -1,5 +1,9 @@
 # AutoLayout
 
+// 2018-01-10
+    把 Priority 單獨設定取消 避免邏輯問題
+    把 Priority 添加在原本的 mLay 裡面，在這邊設定 Priority 不會出現邏輯問題
+
 // 2018-01-03
 修正邏輯錯誤
 isActive = true 之後的 NSLayoutConstraint 只能更改 constant

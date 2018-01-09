@@ -23,31 +23,32 @@ public struct OptionalEdge {
 
 extension UIView {
     
-    @discardableResult func mLay( _ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, _ attribute1: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, active: Bool = true) -> NSLayoutConstraint {
+    @discardableResult func mLay( _ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, _ attribute1: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
-        let layout = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: toItem, attribute: attribute1, multiplier: multiplier, constant: constant)
+        let layout =  NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: toItem, attribute: attribute1, multiplier: multiplier, constant: constant)
+        layout.priority = priority
         layout.isActive = active
         return layout
     }
     
-    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, active: Bool = true) -> NSLayoutConstraint {
-        return mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: 0, active: active)
+    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
+        return mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: 0, active: active, priority: priority)
     }
     
-    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ constant: CGFloat, active: Bool = true) -> NSLayoutConstraint {
-        return mLay(attribute, .equal, nil, attribute, multiplier: 1, constant: constant, active: active)
+    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
+        return mLay(attribute, .equal, nil, attribute, multiplier: 1, constant: constant, active: active, priority: priority)
     }
     
-    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, multiplier: CGFloat, constant: CGFloat, active: Bool = true) -> NSLayoutConstraint {
-        return mLay(attribute, relatedBy, toItem, attribute, multiplier: multiplier, constant: constant, active: active)
+    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, multiplier: CGFloat, constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
+        return mLay(attribute, relatedBy, toItem, attribute, multiplier: multiplier, constant: constant, active: active, priority: priority)
     }
     
-    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, constant: CGFloat, active: Bool = true) -> NSLayoutConstraint {
-        return mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: constant, active: active)
+    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
+        return mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: constant, active: active, priority: priority)
     }
     
-    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, _ attribute1: NSLayoutAttribute, constant: CGFloat, active: Bool = true) -> NSLayoutConstraint {
-        return mLay(attribute, relatedBy, toItem, attribute1, multiplier: 1, constant: constant, active: active)
+    @discardableResult func mLay(_ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, _ attribute1: NSLayoutAttribute, constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
+        return mLay(attribute, relatedBy, toItem, attribute1, multiplier: 1, constant: constant, active: active, priority: priority)
     }
     
     @discardableResult func mLay(pin: UIEdgeInsets, to view: UIView? = nil) -> [NSLayoutConstraint] {
@@ -80,16 +81,6 @@ extension UIView {
     
     @discardableResult func mLay(size: CGSize) -> [NSLayoutConstraint] {
         return [ mLay( .height, size.height), mLay( .width, size.width)]
-    }
-    
-}
-
-extension NSLayoutConstraint {
-    
-    @discardableResult func priority(_ pri: UILayoutPriority) -> NSLayoutConstraint {
-        assert(!isActive, "isActive = true 之後的 NSLayoutConstraint 只能更改 constant, 請重新修改寫法")
-        self.priority = pri
-        return self
     }
     
 }
