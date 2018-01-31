@@ -1,0 +1,6 @@
+framework module Pods_mLayout_Example {
+  umbrella header "Pods-mLayout_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

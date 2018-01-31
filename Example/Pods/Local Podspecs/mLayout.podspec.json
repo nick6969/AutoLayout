@@ -1,0 +1,22 @@
+{
+  "name": "mLayout",
+  "version": "0.1.0",
+  "summary": "A short description of mLayout.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/hawhaw.ya@gmail.com/mLayout",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "hawhaw.ya@gmail.com": "hawhaw.ya@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/hawhaw.ya@gmail.com/mLayout.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "mLayout/Classes/**/*"
+}
