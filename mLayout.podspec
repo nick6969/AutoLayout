@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'mLayout'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Quick using AutoLayout tools.'
 
 

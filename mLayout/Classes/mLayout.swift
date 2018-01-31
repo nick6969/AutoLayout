@@ -8,20 +8,20 @@
 
 import UIKit
 
-public struct OptionalEdge {
-    public var top: CGFloat?
-    public var left: CGFloat?
-    public var bottom: CGFloat?
-    public var right: CGFloat?
-    public init(top: CGFloat? = nil, left: CGFloat? = nil, bottom: CGFloat? = nil, right: CGFloat? = nil) {
-        self.top = top
-        self.left = left
-        self.bottom = bottom
-        self.right = right
-    }
-}
-
 public extension UIView {
+    
+    public struct OptionalEdge {
+        public var top: CGFloat?
+        public var left: CGFloat?
+        public var bottom: CGFloat?
+        public var right: CGFloat?
+        public init(top: CGFloat? = nil, left: CGFloat? = nil, bottom: CGFloat? = nil, right: CGFloat? = nil) {
+            self.top = top
+            self.left = left
+            self.bottom = bottom
+            self.right = right
+        }
+    }
 
     @discardableResult func mLay( _ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, _ attribute1: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
