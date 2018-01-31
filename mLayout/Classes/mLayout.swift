@@ -21,7 +21,7 @@ public struct OptionalEdge {
     }
 }
 
-extension UIView {
+public extension UIView {
 
     @discardableResult func mLay( _ attribute: NSLayoutAttribute, _ relatedBy: NSLayoutRelation, _ toItem: Any?, _ attribute1: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, active: Bool = true, priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ extension UIView {
 
 }
 
-extension UIView {
+public extension UIView {
     enum mLayDirection {
         case top
         case left
@@ -120,7 +120,7 @@ extension UIView {
 
 }
 
-extension NSLayoutConstraint {
+public extension NSLayoutConstraint {
     @discardableResult func active(bool: Bool) -> NSLayoutConstraint {
         self.isActive = bool
         return self
