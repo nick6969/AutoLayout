@@ -168,10 +168,10 @@ public extension UIView {
         assert(view != nil || superview != nil, "can't add Constraint to nil , superview and parmater view is nil")
         var arr: [NSLayoutConstraint] = []
         let view = view ?? superview!
-        if pin.top != nil    { arr.append( mLayEqualSafeArea(with: view, direction: .top   )) }
-        if pin.left != nil   { arr.append( mLayEqualSafeArea(with: view, direction: .left  )) }
-        if pin.bottom != nil { arr.append( mLayEqualSafeArea(with: view, direction: .bottom)) }
-        if pin.right != nil  { arr.append( mLayEqualSafeArea(with: view, direction: .right )) }
+        if let value = pin.top    { arr.append( mLayEqualSafeArea(with: view, direction: .top   , constant: value)) }
+        if let value = pin.left   { arr.append( mLayEqualSafeArea(with: view, direction: .left  , constant: value)) }
+        if let value = pin.bottom { arr.append( mLayEqualSafeArea(with: view, direction: .bottom, constant: value)) }
+        if let value = pin.right  { arr.append( mLayEqualSafeArea(with: view, direction: .right , constant: value)) }
         return arr
     }
 }
