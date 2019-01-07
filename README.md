@@ -1,12 +1,22 @@
 # mLayout
+
+// 2019-01-08
+
+    此為 Swift 4.0 最後一個版本，下一個版本開始使用 Swift 4.2 為基礎
+    
+    系統 NSLayoutConstraint 使用的 Any?部分，改輸入參數型別為 UIView?
+    避免呼叫錯誤的 Method，IDE 不會報錯，執行起來只會直接 Crash，不易 Debug
+
 // 2018-01-10
+
     把 Priority 單獨設定取消 避免邏輯問題
     把 Priority 添加在原本的 mLay 裡面，在這邊設定 Priority 不會出現邏輯問題
 
 // 2018-01-03
-修正邏輯錯誤
-isActive = true 之後的 NSLayoutConstraint 只能更改 constant
-添加 assert 保護，讓開發者可以理解發生的問題，進而修正 
+
+    修正邏輯錯誤
+    isActive = true 之後的 NSLayoutConstraint 只能更改 constant
+    添加 assert 保護，讓開發者可以理解發生的問題，進而修正 
 
 // 2017-10-13
     支援 SafeArea
@@ -17,6 +27,7 @@ isActive = true 之後的 NSLayoutConstraint 只能更改 constant
 
 --
 // 2017-10-10
+
     添加 active 參數 預設是 true
     所以舊有的不用更改
     若是只是要製作一個 NSLayoutConstraint 沒有要及時直接使用的話

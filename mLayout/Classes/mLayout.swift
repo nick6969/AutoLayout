@@ -29,7 +29,7 @@ public extension UIView {
     @discardableResult
     func mLay( _ attribute: NSLayoutAttribute,
                _ relatedBy: NSLayoutRelation,
-               _ toItem: Any?,
+               _ toItem: UIView?,
                _ attribute1: NSLayoutAttribute,
                multiplier: CGFloat,
                constant: CGFloat,
@@ -45,7 +45,7 @@ public extension UIView {
     @discardableResult
     func mLay(_ attribute: NSLayoutAttribute,
               _ relatedBy: NSLayoutRelation,
-              _ toItem: Any?,
+              _ toItem: UIView?,
               active: Bool = true,
               priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
         return mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: 0, active: active, priority: priority)
@@ -62,7 +62,7 @@ public extension UIView {
     @discardableResult
     func mLay(_ attribute: NSLayoutAttribute,
               _ relatedBy: NSLayoutRelation,
-              _ toItem: Any?,
+              _ toItem: UIView?,
               multiplier: CGFloat,
               constant: CGFloat = 0,
               active: Bool = true,
@@ -73,7 +73,7 @@ public extension UIView {
     @discardableResult
     func mLay(_ attribute: NSLayoutAttribute,
               _ relatedBy: NSLayoutRelation,
-              _ toItem: Any?,
+              _ toItem: UIView?,
               constant: CGFloat,
               active: Bool = true,
               priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
@@ -83,7 +83,7 @@ public extension UIView {
     @discardableResult
     func mLay(_ attribute: NSLayoutAttribute,
               _ relatedBy: NSLayoutRelation,
-              _ toItem: Any?,
+              _ toItem: UIView?,
               _ attribute1: NSLayoutAttribute,
               constant: CGFloat = 0,
               active: Bool = true,
