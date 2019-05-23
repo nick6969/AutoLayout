@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIView {
     
-    public struct OptionalEdge {
+    struct OptionalEdge {
         public var top: CGFloat?
         public var left: CGFloat?
         public var bottom: CGFloat?
@@ -27,10 +27,10 @@ public extension UIView {
     }
 
     @discardableResult
-    func mLay( _ attribute: NSLayoutAttribute,
-               _ relatedBy: NSLayoutRelation,
+    func mLay( _ attribute: NSLayoutConstraint.Attribute,
+               _ relatedBy: NSLayoutConstraint.Relation,
                _ toItem: UIView?,
-               _ attribute1: NSLayoutAttribute,
+               _ attribute1: NSLayoutConstraint.Attribute,
                multiplier: CGFloat,
                constant: CGFloat,
                active: Bool = true,
@@ -43,8 +43,8 @@ public extension UIView {
     }
 
     @discardableResult
-    func mLay(_ attribute: NSLayoutAttribute,
-              _ relatedBy: NSLayoutRelation,
+    func mLay(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
               _ toItem: UIView?,
               active: Bool = true,
               priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
@@ -52,7 +52,7 @@ public extension UIView {
     }
 
     @discardableResult
-    func mLay(_ attribute: NSLayoutAttribute,
+    func mLay(_ attribute: NSLayoutConstraint.Attribute,
               _ constant: CGFloat,
               active: Bool = true,
               priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
@@ -60,8 +60,8 @@ public extension UIView {
     }
 
     @discardableResult
-    func mLay(_ attribute: NSLayoutAttribute,
-              _ relatedBy: NSLayoutRelation,
+    func mLay(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
               _ toItem: UIView?,
               multiplier: CGFloat,
               constant: CGFloat = 0,
@@ -71,8 +71,8 @@ public extension UIView {
     }
 
     @discardableResult
-    func mLay(_ attribute: NSLayoutAttribute,
-              _ relatedBy: NSLayoutRelation,
+    func mLay(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
               _ toItem: UIView?,
               constant: CGFloat,
               active: Bool = true,
@@ -81,10 +81,10 @@ public extension UIView {
     }
 
     @discardableResult
-    func mLay(_ attribute: NSLayoutAttribute,
-              _ relatedBy: NSLayoutRelation,
+    func mLay(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
               _ toItem: UIView?,
-              _ attribute1: NSLayoutAttribute,
+              _ attribute1: NSLayoutConstraint.Attribute,
               constant: CGFloat = 0,
               active: Bool = true,
               priority: UILayoutPriority = .init(1000)) -> NSLayoutConstraint {
@@ -139,7 +139,7 @@ public extension UIView {
         case bottom
         case right
 
-        func getLayoutAttribute() -> NSLayoutAttribute {
+        func getLayoutAttribute() -> NSLayoutConstraint.Attribute {
             switch self {
             case .top: return .top
             case .left: return .left

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'mLayout'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'Quick using AutoLayout tools.'
 
 
@@ -21,7 +21,7 @@ TODO: Add long description of the pod here.
   s.author           = { 'Nick Lin' => 'hawhaw.ya@gmail.com' }
   s.source           = { :git => 'https://github.com/nick6969/AutoLayout.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
-  s.swift_version    = '4.0'
+  s.swift_version    = '5.0'
 
   s.source_files = 'mLayout/Classes/**/*'
   
