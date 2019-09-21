@@ -6,7 +6,7 @@
 
 ## Example
 
-See the [sample.md](https://github.com/nick6969/AutoLayout/master/sample.md)
+See the [sample.md](https://github.com/nick6969/AutoLayout/blob/master/sample.md)
 
 ## Installation
 
