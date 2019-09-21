@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'mLayout'
   s.version          = '1.0.0'
   s.summary          = 'Quick using AutoLayout tools.'
-  s.description      = ""
+  s.description      = "help developer use simple way design ui"
 
   s.homepage         = 'https://github.com/nick6969/AutoLayout'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
