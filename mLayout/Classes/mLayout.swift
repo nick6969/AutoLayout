@@ -11,18 +11,20 @@ import UIKit
 public extension UIView {
     
     struct OptionalEdge {
+        
         public var top: CGFloat?
-        public var left: CGFloat?
+        public var leading: CGFloat?
         public var bottom: CGFloat?
-        public var right: CGFloat?
-        public init(top: CGFloat? = nil, left: CGFloat? = nil, bottom: CGFloat? = nil, right: CGFloat? = nil) {
+        public var trailing: CGFloat?
+        
+        public init(top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil) {
             self.top = top
-            self.left = left
+            self.leading = leading
             self.bottom = bottom
-            self.right = right
+            self.trailing = trailing
         }
         public static var allZero: UIView.OptionalEdge {
-            return UIView.OptionalEdge.init(top: 0, left: 0, bottom: 0, right: 0)
+            return UIView.OptionalEdge.init(top: 0, leading: 0, bottom: 0, trailing: 0)
         }
     }
 
@@ -111,10 +113,10 @@ public extension UIView {
         assert(view != nil || superview != nil, "can't add Constraint to nil , superview and parmater view is nil")
         var arr: [NSLayoutConstraint] = []
         let view = view ?? superview!
-        if let top    = pin.top    { arr.append( mLay(.top   , .equal, view, constant: top     )) }
-        if let left   = pin.left   { arr.append( mLay(.left  , .equal, view, constant: left    )) }
-        if let bottom = pin.bottom { arr.append( mLay(.bottom, .equal, view, constant: -bottom )) }
-        if let right  = pin.right  { arr.append( mLay(.right , .equal, view, constant: -right  )) }
+        if let top      = pin.top      { arr.append( mLay(.top      , .equal, view, constant: top       )) }
+        if let leading  = pin.leading  { arr.append( mLay(.leading  , .equal, view, constant: leading   )) }
+        if let bottom   = pin.bottom   { arr.append( mLay(.bottom   , .equal, view, constant: -bottom   )) }
+        if let trailing = pin.trailing { arr.append( mLay(.trailing , .equal, view, constant: -trailing )) }
         return arr
     }
 
@@ -135,16 +137,16 @@ public extension UIView {
 public extension UIView {
     enum mLayDirection {
         case top
-        case left
+        case trailing
         case bottom
-        case right
+        case leading
 
         func getLayoutAttribute() -> NSLayoutConstraint.Attribute {
             switch self {
             case .top: return .top
-            case .left: return .left
+            case .leading: return .leading
             case .bottom: return .bottom
-            case .right: return .right
+            case .trailing: return .trailing
             }
         }
     }
@@ -156,9 +158,9 @@ public extension UIView {
         if #available(iOS 11.0, *) {
             switch direction {
             case .top:  return self.topAnchor.constraint(equalTo: item.safeAreaLayoutGuide.topAnchor, constant: constant).active(bool: active)
-            case .left: return self.leftAnchor.constraint(equalTo: item.safeAreaLayoutGuide.leftAnchor, constant: constant).active(bool: active)
+            case .leading: return self.leadingAnchor.constraint(equalTo: item.safeAreaLayoutGuide.leadingAnchor, constant: constant).active(bool: active)
             case .bottom: return self.bottomAnchor.constraint(equalTo: item.safeAreaLayoutGuide.bottomAnchor, constant: constant).active(bool: active)
-            case .right: return self.rightAnchor.constraint(equalTo: item.safeAreaLayoutGuide.rightAnchor, constant: constant).active(bool: active)
+            case .trailing: return self.trailingAnchor.constraint(equalTo: item.safeAreaLayoutGuide.trailingAnchor, constant: constant).active(bool: active)
             }
         } else {
             let attrib = direction.getLayoutAttribute()
@@ -171,12 +173,13 @@ public extension UIView {
         assert(view != nil || superview != nil, "can't add Constraint to nil , superview and parmater view is nil")
         var arr: [NSLayoutConstraint] = []
         let view = view ?? superview!
-        if let value = pin.top    { arr.append( mLayEqualSafeArea(with: view, direction: .top   , constant:  value)) }
-        if let value = pin.left   { arr.append( mLayEqualSafeArea(with: view, direction: .left  , constant:  value)) }
-        if let value = pin.bottom { arr.append( mLayEqualSafeArea(with: view, direction: .bottom, constant: -value)) }
-        if let value = pin.right  { arr.append( mLayEqualSafeArea(with: view, direction: .right , constant: -value)) }
+        if let value = pin.top      { arr.append( mLayEqualSafeArea(with: view, direction: .top   , constant:  value)) }
+        if let value = pin.leading  { arr.append( mLayEqualSafeArea(with: view, direction: .leading  , constant:  value)) }
+        if let value = pin.bottom   { arr.append( mLayEqualSafeArea(with: view, direction: .bottom, constant: -value)) }
+        if let value = pin.trailing { arr.append( mLayEqualSafeArea(with: view, direction: .trailing , constant: -value)) }
         return arr
     }
+    
 }
 
 public extension NSLayoutConstraint {
