@@ -189,3 +189,122 @@ public extension NSLayoutConstraint {
         return self
     }
 }
+
+public extension UIView {
+    
+    @discardableResult
+    func mLayChain( _ attribute: NSLayoutConstraint.Attribute,
+               _ relatedBy: NSLayoutConstraint.Relation,
+               _ toItem: UIView?,
+               _ attribute1: NSLayoutConstraint.Attribute,
+               multiplier: CGFloat,
+               constant: CGFloat,
+               active: Bool = true,
+               priority: UILayoutPriority = .init(1000)) -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        let layout =  NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: toItem, attribute: attribute1, multiplier: multiplier, constant: constant)
+        layout.priority = priority
+        layout.isActive = active
+        return self
+    }
+
+    @discardableResult
+    func mLayChain(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
+              _ toItem: UIView?,
+              active: Bool = true,
+              priority: UILayoutPriority = .init(1000)) -> Self {
+        mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: 0, active: active, priority: priority)
+        return self
+    }
+
+    @discardableResult
+    func mLayChain(_ attribute: NSLayoutConstraint.Attribute,
+              _ constant: CGFloat,
+              active: Bool = true,
+              priority: UILayoutPriority = .init(1000)) -> Self {
+        mLay(attribute, .equal, nil, attribute, multiplier: 1, constant: constant, active: active, priority: priority)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChain(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
+              _ toItem: UIView?,
+              multiplier: CGFloat,
+              constant: CGFloat = 0,
+              active: Bool = true,
+              priority: UILayoutPriority = .init(1000)) -> Self {
+        mLay(attribute, relatedBy, toItem, attribute, multiplier: multiplier, constant: constant, active: active, priority: priority)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChain(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
+              _ toItem: UIView?,
+              constant: CGFloat,
+              active: Bool = true,
+              priority: UILayoutPriority = .init(1000)) -> Self {
+        mLay(attribute, relatedBy, toItem, attribute, multiplier: 1, constant: constant, active: active, priority: priority)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChain(_ attribute: NSLayoutConstraint.Attribute,
+              _ relatedBy: NSLayoutConstraint.Relation,
+              _ toItem: UIView?,
+              _ attribute1: NSLayoutConstraint.Attribute,
+              constant: CGFloat = 0,
+              active: Bool = true,
+              priority: UILayoutPriority = .init(1000)) -> Self {
+        mLay(attribute, relatedBy, toItem, attribute1, multiplier: 1, constant: constant, active: active, priority: priority)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChain(pin: UIEdgeInsets, to view: UIView? = nil) -> Self {
+        mLay(pin: pin, to: view)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChainEqualSuper() -> Self {
+        mLayEqualSuper()
+        return self
+    }
+    
+    @discardableResult
+    func mLayChain(pin: OptionalEdge, to view: UIView? = nil) -> Self {
+        mLay(pin: pin, to: view)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChainCenterXY(to view: UIView? = nil) -> Self {
+        mLayCenterXY(to: view)
+        return self
+    }
+    
+    @discardableResult
+    func mLayChain(size: CGSize) -> Self {
+        mLay(size: size)
+        return self
+    }
+}
+
+public extension UIView {
+    
+    @discardableResult
+    func mLayChainEqualSafeArea(with item: UIView, direction: mLayDirection, constant: CGFloat = 0, active: Bool = true) -> Self {
+        mLayEqualSafeArea(with: item, direction: direction, constant: constant, active: active)
+        return self
+    }
+
+    @discardableResult
+    func mLayChainSafe(pin: OptionalEdge, to view: UIView? = nil) -> Self {
+        mLaySafe(pin: pin, to: view)
+        return self
+    }
+
+}
